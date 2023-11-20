@@ -8,16 +8,18 @@ You can visit the functional app at the following link: https://data-science-sal
 More information about the dataset can be found at the following link: https://www.kaggle.com/datasets/arnabchaki/data-science-salaries-2023
 
 ## Getting Started
-To run this app locally, make sure you have Python and the required libraries installed. Use the following commands to install the necessary dependencies:
+To run this app locally, make sure you have Python and the required libraries installed. Use the following commands to install the necessary dependencies (assuming HTTPS):
 
 ```bash
-pip install pandas plotly-express scikit-learn dash
+git clone https://github.com/JonathanDollahite/DataScienceSalaryPredictor.git;\
+cd DataScienceSalaryPredictor;\
+pip install -r requirements.txt
 ```
 
 After installing the dependencies, run the app with the following command:
 
 ```bash
-python your_app_name.py
+python app.py
 ```
 
 Visit [http://localhost:8050/](http://localhost:8050/) in your web browser to access the app.
