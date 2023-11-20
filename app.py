@@ -10,6 +10,21 @@ from dash import Dash, dcc, html, Input, Output, State
 salaries_df = pd.read_csv('ds_salaries.csv')
 salaries_df.drop(['salary','salary_currency'], axis = 1, inplace = True)
 
+# Replace abbreviations with meaningful names
+salaries_df['experience_level'] = salaries_df['experience_level'].replace('EN','Entry-level/Junior')
+salaries_df['experience_level'] = salaries_df['experience_level'].replace('MI','Mid-level/Intermediate')
+salaries_df['experience_level'] = salaries_df['experience_level'].replace('SE','Senior-level/Expert')
+salaries_df['experience_level'] = salaries_df['experience_level'].replace('EX','Executive-level/Director')
+
+salaries_df['employment_type'] = salaries_df['employment_type'].replace('FT','Full-time')
+salaries_df['employment_type'] = salaries_df['employment_type'].replace('CT','Contract')
+salaries_df['employment_type'] = salaries_df['employment_type'].replace('FL','Freelance')
+salaries_df['employment_type'] = salaries_df['employment_type'].replace('PT','Part-time')
+
+salaries_df['company_size'] = salaries_df['company_size'].replace('S','Small')
+salaries_df['company_size'] = salaries_df['company_size'].replace('M','Medium')
+salaries_df['company_size'] = salaries_df['company_size'].replace('L','Large')
+
 # Drop the target variable and set is as the label
 X = salaries_df.drop('salary_in_usd', axis=1)  
 y = salaries_df['salary_in_usd']
@@ -58,7 +73,7 @@ app.layout = html.Div([
             dcc.Dropdown(
                 id='work-year',
                 options=[{'label': value, 'value': value} for value in unique_values['work_year']],
-                value=unique_values['work_year'][0]
+                value=2023
             ),
         ]),
         html.Div([
@@ -66,7 +81,7 @@ app.layout = html.Div([
             dcc.Dropdown(
                 id='experience-level',
                 options=[{'label': value, 'value': value} for value in unique_values['experience_level']],
-                value=unique_values['experience_level'][0]
+                value='Entry-level/Junior'
             ),
         ]),
         html.Div([
@@ -74,7 +89,7 @@ app.layout = html.Div([
             dcc.Dropdown(
                 id='employment-type',
                 options=[{'label': value, 'value': value} for value in unique_values['employment_type']],
-                value=unique_values['employment_type'][0]
+                value='Full-time'
             ),
         ]),
         html.Div([
@@ -82,7 +97,7 @@ app.layout = html.Div([
             dcc.Dropdown(
                 id='job-title',
                 options=[{'label': value, 'value': value} for value in unique_values['job_title']],
-                value=unique_values['job_title'][0]
+                value='Data Scientist'
             ),
         ]),
         html.Div([
@@ -90,7 +105,7 @@ app.layout = html.Div([
             dcc.Dropdown(
                 id='employee-residence',
                 options=[{'label': value, 'value': value} for value in unique_values['employee_residence']],
-                value=unique_values['employee_residence'][0]
+                value='US'
             ),
         ]),
         html.Div([
@@ -98,7 +113,7 @@ app.layout = html.Div([
             dcc.Dropdown(
                 id='remote-ratio',
                 options=[{'label': value, 'value': value} for value in unique_values['remote_ratio']],
-                value=unique_values['remote_ratio'][0]
+                value=0
             ),
         ]),
         html.Div([
@@ -106,7 +121,7 @@ app.layout = html.Div([
             dcc.Dropdown(
                 id='company-location',
                 options=[{'label': value, 'value': value} for value in unique_values['company_location']],
-                value=unique_values['company_location'][0]
+                value='US'
             ),
         ]),
         html.Div([
