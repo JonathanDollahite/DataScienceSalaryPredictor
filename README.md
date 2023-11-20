@@ -3,6 +3,8 @@
 ## Overview
 This interactive web application, powered by Dash, predicts salaries in the field of data science based on various input features. The predictive model utilizes Ridge Regression and is trained on a dataset containing information about data science professionals' salaries.
 
+You can visit the functional app at the following link: https://data-science-salary-predictor.onrender.com/
+
 ## Getting Started
 To run this app locally, make sure you have Python and the required libraries installed. Use the following commands to install the necessary dependencies:
 
