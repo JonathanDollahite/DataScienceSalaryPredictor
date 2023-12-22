@@ -129,7 +129,7 @@ app.layout = html.Div([
             dcc.Dropdown(
                 id='company-size',
                 options=[{'label': value, 'value': value} for value in unique_values['company_size']],
-                value=unique_values['company_size'][0]
+                value='Medium'
             ),
         ]),
     ]),  
